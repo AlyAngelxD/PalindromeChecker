@@ -19,8 +19,41 @@ public boolean palindrome(String word)
   if (word.equals(""))
     return true;
   //noSpaces
-  //numLetters
+  String strNoSpaces = new String();
+  for (int i = 0; i < word.length(); i++)
+  {
+    if (word.substring(i,i+1).equals(" "))
+    {
+
+    }
+    else 
+    {
+      strNoSpaces = strNoSpaces + word.substring(i,i+1);
+    }
+  }
+  //numLetters >> onlyLetters
+  String strOnlyLetters = new String();
+  for (int i = 0; i < strNoSpaces.length(); i++)
+  {
+    if (Character.isLetter(strNoSpaces.charAt(i)) == true)
+    {
+      strOnlyLetters = strOnlyLetters + strNoSpaces.charAt(i);
+    }
+  }
   //noCapitals
+  String strNoCapitals = new String();
+  for (int i = 0; i < strOnlyLetters.length(); i++)
+  {
+    if (Character.isUpperCase(strOnlyLetters.charAt(i)) == true)
+    {
+      strNoCapitals = strNoCapitals + Character.toLowerCase(strOnlyLetters.charAt(i));
+    }
+    else
+    {
+      strNoCapitals = strNoCapitals + strOnlyLetters.charAt(i); 
+    }
+  }
+  word = strNoCapitals;
   String firstHalf = word.substring(0,(word.length()/2)+1);
   if (firstHalf.equals(reverse(word)))
     return true;
